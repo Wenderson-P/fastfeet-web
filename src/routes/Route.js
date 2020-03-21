@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Route, Redirect } from 'react-router-dom';
 
+import DefaultLayout from '~/pages/_layouts/default';
+import Auth from '~/pages/_layouts/auth/';
+
 export default function RouteWrapper({
   component: Component,
   isPrivate,
@@ -16,7 +19,19 @@ export default function RouteWrapper({
   if (signed && !isPrivate) {
     return <Redirect to="Dashboard" />;
   }
-  return <Route component={Component} {...rest} />;
+
+  const Layout = signed ? DefaultLayout : Auth;
+
+  return (
+    <Route
+      {...rest}
+      render={props => (
+        <Layout>
+          <Component />
+        </Layout>
+      )}
+    />
+  );
 }
 
 RouteWrapper.propTypes = {
