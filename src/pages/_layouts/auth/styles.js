@@ -14,6 +14,13 @@ export const Wrapper = styled.div`
     flex-direction: column;
   }
 
+  span {
+    color: red;
+    align-self: flex-start;
+    padding-bottom: 15px;
+    font-weight: bold;
+  }
+
   label {
     color: #444444;
     text-transform: uppercase;
