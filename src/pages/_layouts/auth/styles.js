@@ -9,6 +9,11 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
   label {
     color: #444444;
     text-transform: uppercase;
@@ -30,6 +35,8 @@ export const Wrapper = styled.div`
     font-size: 16px;
     font-weight: bold;
     transition: 0.3s;
+    background-color: #7d40e7;
+    margin-bottom: 20px;
     &:hover {
       background-color: ${darken(0.03, '#7D40E7')};
     }
