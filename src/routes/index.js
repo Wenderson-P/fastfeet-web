@@ -8,8 +8,8 @@ import SignIn from '~/pages/SignIn';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="" exact component={SignIn} />
-      <Route path="" exact component={Dashboard} isPrivate />
+      <Route path="/" exact component={SignIn} />
+      <Route path="/dashboard" exact component={Dashboard} isPrivate />
     </Switch>
   );
 }
