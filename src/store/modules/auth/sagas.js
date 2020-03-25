@@ -14,9 +14,23 @@ export function* signIn({ payload }) {
 
   const { token, user } = response.data;
 
+  api.defaults.headers.Authorization = `Beader ${token}`;
+
   yield put(signInSuccess(token, user));
 
   history.push('/dashboard');
 }
 
-export default all([takeLatest('@auth/SIGN_IN_REQUEST', signIn)]);
+export function setToken({ payload }) {
+  if (!payload) {
+    return;
+  }
+
+  const { token } = payload.auth;
+  api.defaults.headers.Authorization = `Beader ${token}`;
+}
+
+export default all([
+  takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+]);
