@@ -8,16 +8,17 @@ import './config/ReactotronConfig';
 import Routes from '~/routes/';
 import history from '~/services/history';
 import GlobalStyle from './styles/global';
-
 import { store, persistor } from './store';
 
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history}>
-        <GlobalStyle />
-        <Routes />
-      </Router>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <GlobalStyle />
+          <Routes />
+        </Router>
+      </PersistGate>
     </Provider>
   );
 }
