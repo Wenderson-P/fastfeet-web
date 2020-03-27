@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Table, Avatar, Division, AddButton } from './styles';
+import {
+  Container,
+  Table,
+  Avatar,
+  Division,
+  AddButton,
+  Status,
+  Elipse,
+} from './styles';
 
 import api from '~/services/api';
 
@@ -47,7 +55,11 @@ export default function Deliveries() {
               </td>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
-              <td>Pendente</td>
+              <td>
+                <Status>
+                  <Elipse />
+                </Status>
+              </td>
               <td>Ações</td>
             </tr>
           ))}
