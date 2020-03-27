@@ -14,7 +14,6 @@ import {
 import api from '~/services/api';
 
 import SearchBar from '~/components/SearchBar';
-
 import AddButton from '~/components/AddButton';
 import ActionMenu from '~/components/ActionMenu';
 
@@ -53,7 +52,7 @@ export default function Deliveries() {
     <Container>
       <h3>Gerenciando encomendas</h3>
       <Division>
-        <SearchBar />
+        <SearchBar placeholder="Buscar por encomendas" />
         <AddButton />
       </Division>
       <Table>
