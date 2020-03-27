@@ -21,7 +21,11 @@ export const Avatar = styled.img`
   margin-right: 13px;
 `;
 
-export const Division = styled.div``;
+export const Division = styled.div`
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const StatusData = styled.td`
   color: ${props => props.color};
