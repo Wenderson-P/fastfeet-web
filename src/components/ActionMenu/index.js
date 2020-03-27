@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { MdVisibility, MdCreate, MdDeleteForever } from 'react-icons/md';
-import { Container } from './styles';
+import {
+  MdMoreHoriz,
+  MdVisibility,
+  MdCreate,
+  MdDeleteForever,
+} from 'react-icons/md';
+import { Container, Modal } from './styles';
 
 export default function ActionMenu() {
+  const [hide, setHide] = useState(true);
   return (
     <Container>
-      <button type="button">
-        <MdVisibility size={10} /> Visualizar
+      <button type="button" onClick={() => setHide(!hide)}>
+        <MdMoreHoriz size={16} color="#C6C6C6" />
       </button>
-      <button type="button">
-        <MdCreate size={10} />
-        Editar
-      </button>
-      <button type="button">
-        <MdDeleteForever size={10} />
-        Excluir
-      </button>
+      <Modal hide={hide}>
+        <button type="button">
+          <MdVisibility size={14} color="#8E5BE8" />
+          Visualizar
+        </button>
+        <hr />
+        <button type="button">
+          <MdCreate size={14} color="#4D85EE" />
+          Editar
+        </button>
+        <hr />
+
+        <button type="button">
+          <MdDeleteForever size={14} color="#DE3B3B" />
+          Excluir
+        </button>
+      </Modal>
     </Container>
   );
 }
