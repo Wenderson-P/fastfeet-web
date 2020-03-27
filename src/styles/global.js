@@ -36,4 +36,31 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+
+  table{
+    text-align: left;
+    margin-top: 20px;
+    border-spacing:0 20px; 
+  }
+
+  tbody{
+
+    tr{
+    background-color: #FFFFFF;
+    font-size:16px;
+    color:#666666;
+    }
+  }
+
+  th{
+    padding:0px 15px;
+    font-size:16px;
+    color: #444444;
+  }
+
+  td {
+    text-align: left;
+    padding:20px 0px 16px 15px;
+  }
 `;
