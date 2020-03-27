@@ -39,7 +39,7 @@ export default function Deliveries() {
     }
 
     loadDeliveries();
-  });
+  }, deliveries);
 
   return (
     <Container>
