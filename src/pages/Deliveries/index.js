@@ -24,14 +24,18 @@ export default function Deliveries() {
       const data = await response.data.map(delivery => {
         if (delivery.start_date === null) {
           delivery.status = 'Pendente';
+          delivery.color = 'yellow';
         } else if (delivery.start_date !== null) {
           delivery.status = 'Retirada';
+          delivery.color = 'blue';
         }
         if (delivery.end_date !== null) {
           delivery.status = 'Entregue';
+          delivery.color = 'green';
         }
         if (delivery.canceled_at !== null) {
           delivery.status = 'Cancelada';
+          delivery.color = 'red';
         }
         return delivery;
       });
@@ -72,7 +76,7 @@ export default function Deliveries() {
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
               <td>
-                <Status>
+                <Status color={delivery.color}>
                   <Elipse />
                   {delivery.status}
                 </Status>
