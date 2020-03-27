@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div``;
 
@@ -10,6 +11,7 @@ export const Modal = styled.div`
   padding: 15px 10px;
   left: calc(90% - 180px);
   box-shadow: 0px 0px 2px #00000026;
+  border-radius: 4px;
 
   button {
     font-size: 16px;
@@ -18,6 +20,9 @@ export const Modal = styled.div`
     margin: 5px 0px;
     svg {
       margin-right: 10px;
+    }
+    &:hover {
+      color: ${darken(0.05, '#000')};
     }
   }
 
