@@ -24,18 +24,18 @@ export default function Deliveries() {
       const data = await response.data.map(delivery => {
         if (delivery.start_date === null) {
           delivery.status = 'Pendente';
-          delivery.color = 'yellow';
+          delivery.color = '#C1BC35';
         } else if (delivery.start_date !== null) {
           delivery.status = 'Retirada';
-          delivery.color = 'blue';
+          delivery.color = '#4D85EE';
         }
         if (delivery.end_date !== null) {
           delivery.status = 'Entregue';
-          delivery.color = 'green';
+          delivery.color = '#2CA42B';
         }
         if (delivery.canceled_at !== null) {
           delivery.status = 'Cancelada';
-          delivery.color = 'red';
+          delivery.color = '#DE3B3B';
         }
         return delivery;
       });
