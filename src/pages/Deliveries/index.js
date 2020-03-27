@@ -20,8 +20,24 @@ export default function Deliveries() {
   useEffect(() => {
     async function loadDeliveries() {
       const response = await api.get('delivery');
-      setDeliveries(response.data);
+
+      const data = await response.data.map(delivery => {
+        if (delivery.start_date === null) {
+          delivery.status = 'Pendente';
+        } else if (delivery.start_date !== null) {
+          delivery.status = 'Retirada';
+        }
+        if (delivery.end_date !== null) {
+          delivery.status = 'Entregue';
+        }
+        if (delivery.canceled_at !== null) {
+          delivery.status = 'Cancelada';
+        }
+        return delivery;
+      });
+      setDeliveries(data);
     }
+
     loadDeliveries();
   });
 
@@ -58,6 +74,7 @@ export default function Deliveries() {
               <td>
                 <Status>
                   <Elipse />
+                  {delivery.status}
                 </Status>
               </td>
               <td>Ações</td>
