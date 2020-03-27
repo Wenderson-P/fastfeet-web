@@ -6,8 +6,9 @@ import {
   Avatar,
   Division,
   AddButton,
-  Status,
-  Elipse,
+  StatusData,
+  StatusElipse,
+  Circle,
 } from './styles';
 
 import api from '~/services/api';
@@ -75,12 +76,12 @@ export default function Deliveries() {
               </td>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
-              <td>
-                <Status color={delivery.color}>
-                  <Elipse />
+              <StatusData color={delivery.color}>
+                <StatusElipse color={delivery.color}>
+                  <Circle color={delivery.color} />
                   {delivery.status}
-                </Status>
-              </td>
+                </StatusElipse>
+              </StatusData>
               <td>Ações</td>
             </tr>
           ))}
