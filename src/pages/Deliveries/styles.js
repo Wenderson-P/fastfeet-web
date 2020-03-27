@@ -9,7 +9,17 @@ export const Container = styled.div`
 
 export const Table = styled.table``;
 
-export const Avatar = styled.image``;
+export const Deliveryman = styled.td`
+  display: flex;
+  align-items: center;
+`;
+
+export const Avatar = styled.img`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 13px;
+`;
 
 export const Division = styled.div``;
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Container,
   Table,
+  Deliveryman,
   Avatar,
   Division,
   AddButton,
@@ -70,10 +71,17 @@ export default function Deliveries() {
             <tr>
               <td>#{delivery.id}</td>
               <td>{delivery.recipient.name}</td>
-              <td>
-                <Avatar>{delivery.deliveryman.avatar_id}</Avatar>
+              <Deliveryman>
+                <Avatar
+                  src={
+                    delivery.deliveryman.avatar
+                      ? delivery.deliveryman.avatar.url
+                      : `https://ui-avatars.com/api/?name=${delivery.deliveryman.name}&background=8171E7&color=fff`
+                  }
+                  alt="Foto do entregador"
+                />
                 {delivery.deliveryman.name}
-              </td>
+              </Deliveryman>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
               <StatusData color={delivery.color}>
