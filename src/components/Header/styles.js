@@ -10,23 +10,27 @@ export const Container = styled.div`
   margin-bottom: 2%;
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   img {
     height: 26px;
     border-right: 1px solid #dddddd;
     padding-right: 30px;
   }
-`;
-
-export const Option = styled.a`
-  color: #999999;
-  font-size: 15px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 0px 20px;
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      color: #999999;
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0px 20px;
+    }
+  }
 `;
 
 export const Profile = styled.aside`
