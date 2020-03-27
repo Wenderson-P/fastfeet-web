@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Container, Menu, Option, Profile } from './styles';
+import { Container, Menu, Profile } from './styles';
 import logo from '~/assets/fastfeet-logo.png';
 
 export default function Header() {
