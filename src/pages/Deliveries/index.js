@@ -31,6 +31,7 @@ export default function Deliveries() {
             <th>Destinatário</th>
             <th>Entregador</th>
             <th>Cidade</th>
+            <th>Estado</th>
             <th>Status</th>
             <th>Ações</th>
           </tr>
@@ -38,7 +39,7 @@ export default function Deliveries() {
         <tbody>
           {deliveries.map(delivery => (
             <tr>
-              <td>{delivery.id}</td>
+              <td>#{delivery.id}</td>
               <td>{delivery.recipient.name}</td>
               <td>
                 <Avatar>{delivery.deliveryman.avatar_id}</Avatar>
