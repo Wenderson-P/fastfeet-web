@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 0px 20px;
   border: 1px solid #dddddd;
   height: 64px;
+  margin-bottom: 2%;
 `;
 
 export const Menu = styled.div`
