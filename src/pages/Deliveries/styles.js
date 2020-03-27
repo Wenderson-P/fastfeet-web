@@ -23,8 +23,6 @@ export const Avatar = styled.img`
 
 export const Division = styled.div``;
 
-export const AddButton = styled.button``;
-
 export const StatusData = styled.td`
   color: ${props => props.color};
   font-weight: bold;

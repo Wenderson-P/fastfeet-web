@@ -6,7 +6,6 @@ import {
   Deliveryman,
   Avatar,
   Division,
-  AddButton,
   StatusData,
   StatusElipse,
   Circle,
@@ -15,6 +14,8 @@ import {
 import api from '~/services/api';
 
 import SearchBar from '~/components/SearchBar';
+
+import AddButton from '~/components/AddButton';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -52,7 +53,7 @@ export default function Deliveries() {
       <h3>Gerenciando encomendas</h3>
       <Division>
         <SearchBar />
-        <AddButton>Cadastrar</AddButton>
+        <AddButton />
       </Division>
       <Table>
         <thead>
