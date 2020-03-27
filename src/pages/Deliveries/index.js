@@ -16,6 +16,7 @@ import api from '~/services/api';
 import SearchBar from '~/components/SearchBar';
 
 import AddButton from '~/components/AddButton';
+import ActionMenu from '~/components/ActionMenu';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -91,7 +92,9 @@ export default function Deliveries() {
                   {delivery.status}
                 </StatusElipse>
               </StatusData>
-              <td>Ações</td>
+              <td>
+                <ActionMenu />
+              </td>
             </tr>
           ))}
         </tbody>
