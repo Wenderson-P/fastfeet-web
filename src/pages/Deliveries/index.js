@@ -50,7 +50,7 @@ export default function Deliveries() {
 
   return (
     <Container>
-      <h3>Gerenciando encomendas</h3>
+      <h2>Gerenciando encomendas</h2>
       <Division>
         <SearchBar placeholder="Buscar por encomendas" />
         <AddButton />
