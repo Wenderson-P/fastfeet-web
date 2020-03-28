@@ -5,10 +5,10 @@ import history from '~/services/history';
 
 import { Container } from './styles';
 
-export default function AddButton() {
+export default function AddButton({ onClick }) {
   return (
     <Container>
-      <button type="button">
+      <button type="submit" onClick={onClick}>
         <MdCheck size={16} />
         Salvar
       </button>
