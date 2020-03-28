@@ -28,6 +28,7 @@ export default function AddRecipient() {
       state,
       cep,
     });
+    history.push('/recipient');
   }
   return (
     <Container>
