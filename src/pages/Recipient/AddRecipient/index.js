@@ -10,7 +10,7 @@ import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
 
 export default function AddRecipient() {
-  function handleSubmit({
+  async function handleSubmit({
     name,
     street,
     number,
@@ -19,7 +19,7 @@ export default function AddRecipient() {
     state,
     cep,
   }) {
-    api.post('/recipients', {
+    await api.post('/recipients', {
       name,
       street,
       number,
