@@ -28,9 +28,13 @@ export default createGlobalStyle`
   a{
     text-decoration: none;
   }
-
+  
   ul{
     list-style : none;
+  }
+
+  h2 {
+    font-size: 24px;
   }
 
   button {
