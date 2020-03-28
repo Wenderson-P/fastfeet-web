@@ -53,7 +53,7 @@ export default function Deliveries() {
       <h2>Gerenciando encomendas</h2>
       <Division>
         <SearchBar placeholder="Buscar por encomendas" />
-        <AddButton />
+        <AddButton url="/deliveries/add-delivery" />
       </Division>
       <Table>
         <thead>
