@@ -1,7 +1,20 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Header, Buttons } from './styles';
+
+import SaveButton from '~/components/SaveButton';
+import GoBackButton from '~/components/GoBackButton';
 
 export default function AddDelivery() {
-  return <Container />;
+  return (
+    <Container>
+      <Header>
+        <h2>Cadastro de encomendas</h2>
+        <Buttons>
+          <SaveButton />
+          <GoBackButton />
+        </Buttons>
+      </Header>
+    </Container>
+  );
 }
