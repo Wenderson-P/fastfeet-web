@@ -68,5 +68,8 @@ export default createGlobalStyle`
   td {
     text-align: left;
     padding:20px 0px 16px 15px;
+    &:last-child{
+      padding-left:30px;
+    }
   }
 `;
