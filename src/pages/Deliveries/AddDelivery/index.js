@@ -53,6 +53,14 @@ export default function AddDelivery() {
     loadRecipient();
   }, []);
 
+  async function handleSubmit() {
+    await api.post('/delivery', {
+      product: selectedProduct,
+      recipient_id: selectedRecipient.value,
+      deliveryman_id: selectedDeliveryman.value,
+    });
+    history.goBack();
+  }
   return (
     <Container>
       <Header>
