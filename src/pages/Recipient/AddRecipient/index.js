@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Form, Input } from '@rocketseat/unform';
-import { Container, Header, Buttons, Row, Item } from './styles';
+import { Container, Header, Buttons, Row } from './styles';
 
 import api from '~/services/api';
 import history from '~/services/history';
