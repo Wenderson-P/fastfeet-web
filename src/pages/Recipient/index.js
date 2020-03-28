@@ -25,7 +25,7 @@ export default function Deliveries() {
       <h2>Gerenciando destinatários</h2>
       <Division>
         <SearchBar placeholder="Buscar por destinatários" />
-        <AddButton url="/deliverymen/add-recipient" />
+        <AddButton url="/recipient/add-recipient" />
       </Division>
       <Table>
         <thead>
