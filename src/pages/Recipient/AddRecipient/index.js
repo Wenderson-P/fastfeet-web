@@ -10,11 +10,24 @@ import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
 
 export default function AddRecipient() {
-  function handleSubmit({ name, email }) {
-    // api.post('/delivery', {
-    //   name,
-    //   email,
-    // });
+  function handleSubmit({
+    name,
+    street,
+    number,
+    complement,
+    city,
+    state,
+    cep,
+  }) {
+    api.post('/recipients', {
+      name,
+      street,
+      number,
+      complement,
+      city,
+      state,
+      cep,
+    });
   }
   return (
     <Container>
