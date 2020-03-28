@@ -1,15 +1,60 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin: 0% 10% auto;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 25px 20px;
+  }
+`;
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const Buttons = styled.div`
   display: flex;
   button {
     margin: 0px 8px;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-self: stretch;
+  margin-bottom: 16px;
+`;
+export const Select = styled.div`
+  width: 100%;
+  &:first-child {
+    margin-right: 20px;
+  }
+`;
+export const Item = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444444;
+  }
+  input {
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+
+    font-size: 16px;
+    color: #999999;
+    padding: 12px 15px;
   }
 `;
