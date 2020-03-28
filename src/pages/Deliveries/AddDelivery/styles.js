@@ -10,6 +10,6 @@ export const Header = styled.div`
 export const Buttons = styled.div`
   display: flex;
   button {
-    margin: 0px 16px;
+    margin: 0px 8px;
   }
 `;

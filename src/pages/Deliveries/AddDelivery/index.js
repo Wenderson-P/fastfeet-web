@@ -11,8 +11,8 @@ export default function AddDelivery() {
       <Header>
         <h2>Cadastro de encomendas</h2>
         <Buttons>
-          <SaveButton />
           <GoBackButton />
+          <SaveButton />
         </Buttons>
       </Header>
     </Container>
