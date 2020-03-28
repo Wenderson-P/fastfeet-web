@@ -49,18 +49,6 @@ export const Row = styled.div`
   }
 `;
 
-export const Select = styled.div`
-  width: 100%;
-
-  &:first-child {
-    margin-right: 20px;
-  }
-
-  span {
-    font-weight: bold;
-    color: #444444;
-  }
-`;
 export const Item = styled.div`
   display: flex;
   width: 100%;
