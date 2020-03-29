@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import {
-  Container,
-  Table,
-  Deliveryman,
-  Avatar,
-  Division,
-  StatusData,
-  StatusElipse,
-  Circle,
-} from './styles';
+import { Container, Table, Deliveryman, Avatar, Division } from './styles';
 
 import api from '~/services/api';
 
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
+import StatusBadge from '~/components/StatusBadge';
 import ActionMenu from '~/components/ActionMenu';
 
 export default function Deliveries() {
@@ -24,25 +16,7 @@ export default function Deliveries() {
     async function loadDeliveries() {
       const response = await api.get('delivery');
 
-      const data = await response.data.map(delivery => {
-        if (delivery.start_date === null) {
-          delivery.status = 'Pendente';
-          delivery.color = '#C1BC35';
-        } else if (delivery.start_date !== null) {
-          delivery.status = 'Retirada';
-          delivery.color = '#4D85EE';
-        }
-        if (delivery.end_date !== null) {
-          delivery.status = 'Entregue';
-          delivery.color = '#2CA42B';
-        }
-        if (delivery.canceled_at !== null) {
-          delivery.status = 'Cancelada';
-          delivery.color = '#DE3B3B';
-        }
-        return delivery;
-      });
-      setDeliveries(data);
+      setDeliveries(response.data);
     }
 
     loadDeliveries();
@@ -85,12 +59,11 @@ export default function Deliveries() {
               </Deliveryman>
               <td>{delivery.recipient.city}</td>
               <td>{delivery.recipient.state}</td>
-              <StatusData color={delivery.color}>
-                <StatusElipse color={delivery.color}>
-                  <Circle color={delivery.color} />
-                  {delivery.status}
-                </StatusElipse>
-              </StatusData>
+              <StatusBadge
+                start_date={delivery.start_date}
+                end_date={delivery.end_date}
+                canceled_at={delivery.canceled_at}
+              />
               <td>
                 <ActionMenu visualize edit erase />
               </td>
