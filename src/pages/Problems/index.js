@@ -35,7 +35,7 @@ export default function Problems() {
               <td>#{problem.id}</td>
               <td>{problem.description}</td>
               <td>
-                <ActionMenu />
+                <ActionMenu visualize erase eraseLabel="Cancelar encomenda" />
               </td>
             </tr>
           ))}
