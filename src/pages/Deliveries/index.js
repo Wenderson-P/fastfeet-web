@@ -92,7 +92,7 @@ export default function Deliveries() {
                 </StatusElipse>
               </StatusData>
               <td>
-                <ActionMenu />
+                <ActionMenu visualize edit erase />
               </td>
             </tr>
           ))}
