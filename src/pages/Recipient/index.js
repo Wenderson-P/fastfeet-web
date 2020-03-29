@@ -46,7 +46,7 @@ export default function Deliveries() {
                 {recipient.state}
               </td>
               <td>
-                <ActionMenu />
+                <ActionMenu edit erase />
               </td>
             </tr>
           ))}
