@@ -54,7 +54,7 @@ export default function AddDeliveryMan() {
               <td>{deliveryman.name}</td>
               <td>{deliveryman.email}</td>
               <td>
-                <ActionMenu />
+                <ActionMenu edit erase />
               </td>
             </tr>
           ))}
