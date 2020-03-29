@@ -63,13 +63,18 @@ export default createGlobalStyle`
     padding:0px 15px;
     font-size:16px;
     color: #444444;
+
+    &:last-child{
+      text-align:right;
+    }
   }
 
   td {
     text-align: left;
     padding:20px 0px 16px 15px;
     &:last-child{
-      padding-left:30px;
+      text-align: right;
+      padding-right:30px;
     }
   }
 `;
