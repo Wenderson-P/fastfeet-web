@@ -8,7 +8,7 @@ import {
 } from 'react-icons/md';
 import { Container, Modal } from './styles';
 
-export default function ActionMenu() {
+export default function ActionMenu({ visualize, edit, erase, eraseLabel }) {
   const [hide, setHide] = useState(true);
   return (
     <Container>
