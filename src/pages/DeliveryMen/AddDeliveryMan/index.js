@@ -6,15 +6,19 @@ import { Container, Header, Buttons, Row, Item } from './styles';
 import api from '~/services/api';
 import history from '~/services/history';
 
+import AvatarInput from './AvatarInput';
 import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
 
 export default function AddDelivery() {
-  function handleSubmit({ name, email }) {
-    // api.post('/delivery', {
-    //   name,
-    //   email,
-    // });
+  async function handleSubmit({ name, email, avatar_id }) {
+    await api.post('/deliveryman', {
+      name,
+      email,
+      avatar_id,
+    });
+
+    history.push('/deliverymen');
   }
   return (
     <Container>
@@ -26,6 +30,7 @@ export default function AddDelivery() {
         </Buttons>
       </Header>
       <Form id="addDeliveryMan" onSubmit={handleSubmit}>
+        <AvatarInput name="avatar_id" />
         <Row>
           <Item>
             <Input
