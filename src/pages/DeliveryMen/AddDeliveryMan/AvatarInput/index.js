@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
+import { MdInsertPhoto } from 'react-icons/md';
 import { Container } from './styles';
 
 import api from '~/services/api';
 
 export default function AvatarInput() {
   const { registerField } = useField('avatar');
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState(null);
   const [file, setFile] = useState();
 
   const ref = useRef();
@@ -19,7 +20,7 @@ export default function AvatarInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -35,14 +36,22 @@ export default function AvatarInput() {
   }
 
   return (
-    <Container>
-      <img src={preview || ''} alt="imagem do entregador" />
+    <Container htmlFor="avatar">
+      {preview === null ? (
+        <>
+          <MdInsertPhoto size={40} color="dddddd" />
+          <span>Adicionar foto</span>
+        </>
+      ) : (
+          <img src={preview} alt="imagem do entregador" />
+        )}
       <input
         type="file"
         id="avatar"
         accept="image/*"
         onChange={handleChange}
         data-file={file}
+        ref={ref}
       />
     </Container>
   );
