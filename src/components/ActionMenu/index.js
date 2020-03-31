@@ -6,10 +6,20 @@ import {
   MdCreate,
   MdDeleteForever,
 } from 'react-icons/md';
+
 import { Container, Modal } from './styles';
 
-export default function ActionMenu({ visualize, edit, erase, eraseLabel }) {
+export default function ActionMenu({
+  visualize,
+  viewAction,
+  edit,
+  editAction,
+  erase,
+  eraseAction,
+  eraseLabel,
+}) {
   const [hide, setHide] = useState(true);
+
   return (
     <Container>
       <button type="button" onClick={() => setHide(!hide)}>
@@ -18,7 +28,7 @@ export default function ActionMenu({ visualize, edit, erase, eraseLabel }) {
       <Modal hide={hide}>
         {visualize && (
           <>
-            <button type="button">
+            <button type="button" onClick={viewAction}>
               <MdVisibility size={14} color="#8E5BE8" />
               Visualizar
             </button>
@@ -28,7 +38,7 @@ export default function ActionMenu({ visualize, edit, erase, eraseLabel }) {
         )}
         {edit && (
           <>
-            <button type="button">
+            <button type="button" onClick={editAction}>
               <MdCreate size={14} color="#4D85EE" />
               Editar
             </button>
@@ -36,7 +46,7 @@ export default function ActionMenu({ visualize, edit, erase, eraseLabel }) {
           </>
         )}
         {erase && (
-          <button type="button">
+          <button type="button" onClick={eraseAction}>
             <MdDeleteForever size={14} color="#DE3B3B" />
             {eraseLabel || 'Excluir'}
           </button>

@@ -18,6 +18,9 @@ export const Modal = styled.div`
     min-width: 120px;
     text-align: left;
     color: #999999;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
     svg {
       margin-right: 10px;
     }
