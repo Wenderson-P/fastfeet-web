@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Table, Division } from './styles';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
@@ -19,6 +20,15 @@ export default function Deliveries() {
     }
     loadRecipients();
   }, []);
+
+  async function handleDelete(id) {
+    try {
+      await api.delete(`/recipients/${id}`);
+      history.go(0);
+    } catch (error) {
+      console.tron.log(error);
+    }
+  }
 
   return (
     <Container>
@@ -46,7 +56,11 @@ export default function Deliveries() {
                 {recipient.state}
               </td>
               <td>
-                <ActionMenu edit erase />
+                <ActionMenu
+                  edit
+                  erase
+                  eraseAction={() => handleDelete(recipient.id)}
+                />
               </td>
             </tr>
           ))}
