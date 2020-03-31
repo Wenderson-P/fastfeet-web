@@ -36,10 +36,10 @@ export default function AddRecipient() {
         <h2>Cadastro de entregadores</h2>
         <Buttons>
           <GoBackButton />
-          <SaveButton onClick={handleSubmit} formId="addDeliveryMan" />
+          <SaveButton onClick={handleSubmit} formId="addRecipient" />
         </Buttons>
       </Header>
-      <Form id="addDeliveryMan" onSubmit={handleSubmit}>
+      <Form id="addRecipient" onSubmit={handleSubmit}>
         <Row>
           <Input
             name="name"
