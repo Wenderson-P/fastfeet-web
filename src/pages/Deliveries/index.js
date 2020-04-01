@@ -24,6 +24,12 @@ export default function Deliveries() {
     loadDeliveries();
   }, []);
 
+  function showModal(delivery_id) {
+    const deliveryFiltered = deliveries.filter(item => item.id === delivery_id);
+    setDelivery(deliveryFiltered[0]);
+    setHideModal(!hideModal);
+  }
+
   return (
     <Container>
       <h2>Gerenciando encomendas</h2>
@@ -76,7 +82,12 @@ export default function Deliveries() {
                 canceled_at={delivery.canceled_at}
               />
               <td>
-                <ActionMenu visualize edit erase />
+                <ActionMenu
+                  visualize
+                  viewAction={() => showModal(delivery.id)}
+                  edit
+                  erase
+                />
               </td>
             </tr>
           ))}
