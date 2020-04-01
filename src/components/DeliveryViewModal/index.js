@@ -14,12 +14,9 @@ export default function DeliveryViewModal({
       <Modal>
         <Data>
           <h4>Informações da encomenda</h4>
-          <p>
-            {`${recipient.street}, ${recipient.number}
-          ${recipient.city} - ${recipient.state}
-          ${recipient.cep}
-          `}
-          </p>
+          <p>{`${recipient.street}, ${recipient.number}`}</p>
+          <p>{`${recipient.city} - ${recipient.state}`}</p>
+          <p>{`${recipient.cep}`}</p>
         </Data>
         <Data>
           <h4>Datas</h4>
