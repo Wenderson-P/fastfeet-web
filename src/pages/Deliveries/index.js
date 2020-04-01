@@ -8,19 +8,21 @@ import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
 import StatusBadge from '~/components/StatusBadge';
 import ActionMenu from '~/components/ActionMenu';
+import DeliveryViewModal from '~/components/DeliveryViewModal';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
+  const [delivery, setDelivery] = useState();
+  const [hideModal, setHideModal] = useState(true);
 
   useEffect(() => {
     async function loadDeliveries() {
       const response = await api.get('delivery');
-
       setDeliveries(response.data);
     }
 
     loadDeliveries();
-  }, deliveries);
+  }, []);
 
   return (
     <Container>
@@ -29,6 +31,15 @@ export default function Deliveries() {
         <SearchBar placeholder="Buscar por encomendas" />
         <AddButton url="/deliveries/add-delivery" />
       </Division>
+      {delivery && (
+        <DeliveryViewModal
+          recipient={delivery.recipient}
+          startDate={delivery.start_date}
+          endDate={delivery.end_date}
+          signature={delivery.signature}
+          hide={hideModal}
+        />
+      )}
       <Table>
         <thead>
           <tr>
