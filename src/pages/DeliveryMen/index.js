@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { toast } from 'react-toastify';
 import { Container, Table, Deliveryman, Avatar, Division } from './styles';
 
 import api from '~/services/api';
@@ -28,7 +29,9 @@ export default function AddDeliveryMan() {
         history.go(0);
       }
     } catch (error) {
-      console.tron.log(error);
+      toast.error('Não foi possivel excluir este entregador', {
+        autoClose: 4000,
+      });
     }
   }
   return (
