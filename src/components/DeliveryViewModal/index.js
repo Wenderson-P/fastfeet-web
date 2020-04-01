@@ -31,10 +31,8 @@ export default function DeliveryViewModal({
         </Data>
         {signature && (
           <Data>
-            <Signature>
-              <h4>Assinatura do destinatário</h4>
-              <img src={signature.url} alt="Assinatura" />
-            </Signature>
+            <h4>Assinatura do destinatário</h4>
+            <img src={signature.url} alt="Assinatura" />
           </Data>
         )}
       </Modal>

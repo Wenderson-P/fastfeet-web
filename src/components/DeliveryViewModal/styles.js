@@ -15,14 +15,31 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-  padding: 25px;
+  padding: 0px 25px 25px 25px;
 
   background-color: #fff;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  width: 30%;
 `;
 
-export const Data = styled.div``;
-
-export const Signature = styled.div``;
+export const Data = styled.div`
+  display: flex;
+  flex-direction: column;
+  h4 {
+    margin-top: 20px;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  span {
+    font-weight: bold;
+  }
+  img {
+    margin-top: 20px;
+    align-self: center;
+    width: 60%;
+  }
+`;
