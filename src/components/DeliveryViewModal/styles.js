@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-  padding: 0px 25px 25px 25px;
+  padding: 25px;
 
   background-color: #fff;
   display: flex;
