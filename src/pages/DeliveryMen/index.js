@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Table, Deliveryman, Avatar, Division } from './styles';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
@@ -20,6 +21,16 @@ export default function AddDeliveryMan() {
     loadDeliveryMen();
   }, []);
 
+  async function handleDelete(id) {
+    try {
+      if (window.confirm(`Você deseja excluir o entregador${id}?`)) {
+        await api.delete(`/deliveryman/${id}`);
+        history.go(0);
+      }
+    } catch (error) {
+      console.tron.log(error);
+    }
+  }
   return (
     <Container>
       <h2>Gerenciando entregadores</h2>
@@ -54,7 +65,11 @@ export default function AddDeliveryMan() {
               <td>{deliveryman.name}</td>
               <td>{deliveryman.email}</td>
               <td>
-                <ActionMenu edit erase />
+                <ActionMenu
+                  edit
+                  erase
+                  eraseAction={() => handleDelete(deliveryman.id)}
+                />
               </td>
             </tr>
           ))}
