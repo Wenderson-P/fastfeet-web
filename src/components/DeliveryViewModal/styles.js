@@ -27,8 +27,9 @@ export const Modal = styled.div`
 export const Data = styled.div`
   display: flex;
   flex-direction: column;
-  h4 {
-    margin-top: 20px;
+  hr {
+    margin: 10px 0px;
+    border-top: 1px solid #ccc;
   }
   p {
     margin-top: 5px;

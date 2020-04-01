@@ -17,6 +17,7 @@ export default function DeliveryViewModal({
           <p>{`${recipient.street}, ${recipient.number}`}</p>
           <p>{`${recipient.city} - ${recipient.state}`}</p>
           <p>{`${recipient.cep}`}</p>
+          <hr />
         </Data>
         <Data>
           <h4>Datas</h4>
@@ -28,7 +29,9 @@ export default function DeliveryViewModal({
             <span>Entrega: </span>
             {`${format(parseISO(endDate), 'dd/MM/yyyy')}`}
           </p>
+          <hr />
         </Data>
+
         {signature && (
           <Data>
             <h4>Assinatura do destinatário</h4>
