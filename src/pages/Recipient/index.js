@@ -23,8 +23,10 @@ export default function Deliveries() {
 
   async function handleDelete(id) {
     try {
-      await api.delete(`/recipients/${id}`);
-      history.go(0);
+      if (window.confirm(`Você deseja excluir o entregador${id}?`)) {
+        await api.delete(`/recipients/${id}`);
+        history.go(0);
+      }
     } catch (error) {
       console.tron.log(error);
     }
