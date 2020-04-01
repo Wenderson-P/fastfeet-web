@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { parseISO, format } from 'date-fns/';
 import { Container, Modal, Data, Signature } from './styles';
 
 export default function DeliveryViewModal({
@@ -23,8 +23,14 @@ export default function DeliveryViewModal({
         </Data>
         <Data>
           <h4>Datas</h4>
-          <h3>Retirada: {startDate}</h3>
-          <h3>Entrega: {endDate}</h3>
+          <p>
+            <span>Retirada: </span>
+            {`${format(parseISO(startDate), 'dd/MM/yyyy')}`}
+          </p>
+          <p>
+            <span>Entrega: </span>
+            {`${format(parseISO(endDate), 'dd/MM/yyyy')}`}
+          </p>
         </Data>
         {signature && (
           <Data>
