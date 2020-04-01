@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { toast } from 'react-toastify';
 import { Container, Table, Division } from './styles';
 
 import api from '~/services/api';
@@ -28,7 +29,9 @@ export default function Deliveries() {
         history.go(0);
       }
     } catch (error) {
-      console.tron.log(error);
+      toast.error('Não foi possivel excluir este destinatário', {
+        autoClose: 4000,
+      });
     }
   }
 
