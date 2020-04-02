@@ -7,7 +7,7 @@ export default function Pagination({ actualPage = 1, changePage }) {
   const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   return (
     <Container>
-      <Button>
+      <Button onClick={() => changePage(actualPage - 1)}>
         <MdKeyboardArrowLeft size={30} />
       </Button>
       {pages.map(page => (
@@ -18,7 +18,7 @@ export default function Pagination({ actualPage = 1, changePage }) {
           {page}
         </PageBlock>
       ))}
-      <Button>
+      <Button onClick={() => changePage(actualPage + 1)}>
         <MdKeyboardArrowRight size={30} />
       </Button>
     </Container>
