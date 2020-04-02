@@ -34,19 +34,22 @@ export default function DeliveryViewModal({
           <p>{`${recipient.cep}`}</p>
           <hr />
         </Data>
-        <Data>
-          <h4>Datas</h4>
-          <p>
-            <span>Retirada: </span>
-            {`${format(parseISO(startDate), 'dd/MM/yyyy')}`}
-          </p>
-          <p>
-            <span>Entrega: </span>
-            {`${format(parseISO(endDate), 'dd/MM/yyyy')}`}
-          </p>
-          <hr />
-        </Data>
-
+        {startDate && (
+          <Data>
+            <h4>Datas</h4>
+            <p>
+              <span>Retirada: </span>
+              {`${format(parseISO(startDate), 'dd/MM/yyyy')}`}
+            </p>
+            {endDate && (
+              <p>
+                <span>Entrega: </span>
+                {`${format(parseISO(endDate), 'dd/MM/yyyy')}`}
+              </p>
+            )}
+            <hr />
+          </Data>
+        )}
         {signature && (
           <Data>
             <h4>Assinatura do destinatário</h4>
