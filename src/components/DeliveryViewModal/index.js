@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { parseISO, format } from 'date-fns/';
 import { Container, Modal, Data, Signature } from './styles';
 
@@ -8,10 +8,25 @@ export default function DeliveryViewModal({
   startDate,
   endDate,
   signature,
+  closeModal,
 }) {
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        closeModal();
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [modalRef]);
+
   return (
     <Container hide={hide}>
-      <Modal>
+      <Modal ref={modalRef}>
         <Data>
           <h4>Informações da encomenda</h4>
           <p>{`${recipient.street}, ${recipient.number}`}</p>
