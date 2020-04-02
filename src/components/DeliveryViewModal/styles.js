@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: ${props => (props.hide ? 'none' : 'block')};
+  display: ${props => (props.hide ? 'none ' : 'flex')};
   z-index: 10;
   position: fixed;
   top: 0;
@@ -9,7 +9,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  display: flex;
   justify-content: center;
   align-items: center;
 `;
