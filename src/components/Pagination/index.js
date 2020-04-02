@@ -11,7 +11,10 @@ export default function Pagination({ actualPage = 1, changePage }) {
         <MdKeyboardArrowLeft size={30} />
       </Button>
       {pages.map(page => (
-        <PageBlock active={page === actualPage} onClick={changePage}>
+        <PageBlock
+          active={page === actualPage}
+          onClick={() => changePage(page)}
+        >
           {page}
         </PageBlock>
       ))}
