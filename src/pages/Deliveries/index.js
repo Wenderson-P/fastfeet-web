@@ -14,6 +14,7 @@ export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [delivery, setDelivery] = useState();
   const [hideModal, setHideModal] = useState(true);
+  const [searchProduct, setSearchProduct] = useState('');
 
   useEffect(() => {
     async function loadDeliveries() {
@@ -37,7 +38,10 @@ export default function Deliveries() {
     <Container>
       <h2>Gerenciando encomendas</h2>
       <Division>
-        <SearchBar placeholder="Buscar por encomendas" />
+        <SearchBar
+          placeholder="Buscar por encomendas"
+          search={setSearchProduct}
+        />
         <AddButton url="/deliveries/add-delivery" />
       </Division>
       {delivery && (
