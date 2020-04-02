@@ -9,12 +9,14 @@ import AddButton from '~/components/AddButton';
 import StatusBadge from '~/components/StatusBadge';
 import ActionMenu from '~/components/ActionMenu';
 import DeliveryViewModal from '~/components/DeliveryViewModal';
+import Pagination from '~/components/Pagination';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [delivery, setDelivery] = useState();
   const [hideModal, setHideModal] = useState(true);
   const [searchProduct, setSearchProduct] = useState('');
+  const [actualPage, setActualPage] = useState(1);
 
   useEffect(() => {
     async function loadDeliveries() {
@@ -102,6 +104,7 @@ export default function Deliveries() {
           ))}
         </tbody>
       </Table>
+      <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
 }
