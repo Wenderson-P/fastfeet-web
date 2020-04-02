@@ -18,18 +18,19 @@ export default function Deliveries() {
 
   useEffect(() => {
     async function loadDeliveries() {
-      const response = await api.get('delivery');
+      const response = await api.get(`delivery?q=${searchProduct}`);
       setDeliveries(response.data);
     }
 
     loadDeliveries();
-  }, []);
+  }, [searchProduct]);
 
   function showModal(delivery_id) {
     const deliveryFiltered = deliveries.filter(item => item.id === delivery_id);
     setDelivery(deliveryFiltered[0]);
     setHideModal(!hideModal);
   }
+
   function closeModal() {
     setHideModal(!hideModal);
   }
