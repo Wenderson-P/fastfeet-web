@@ -29,6 +29,9 @@ export default function Deliveries() {
     setDelivery(deliveryFiltered[0]);
     setHideModal(!hideModal);
   }
+  function closeModal() {
+    setHideModal(!hideModal);
+  }
 
   return (
     <Container>
@@ -44,6 +47,7 @@ export default function Deliveries() {
           endDate={delivery.end_date}
           signature={delivery.signature}
           hide={hideModal}
+          closeModal={closeModal}
         />
       )}
       <Table>
