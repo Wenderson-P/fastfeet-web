@@ -9,19 +9,23 @@ import history from '~/services/history';
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
 import ActionMenu from '~/components/ActionMenu';
+import Pagination from '~/components/Pagination';
 
 export default function AddDeliveryMan() {
   const [deliverymen, setDeliverymen] = useState([]);
   const [searchDeliveryman, setSearchDeliveryman] = useState('');
+  const [actualPage, setActualPage] = useState(1);
 
   useEffect(() => {
     async function loadDeliveryMen() {
-      const response = await api.get(`deliveryman?q=${searchDeliveryman}`);
+      const response = await api.get(
+        `deliveryman?q=${searchDeliveryman}&page=${actualPage}`
+      );
 
       setDeliverymen(response.data);
     }
     loadDeliveryMen();
-  }, [searchDeliveryman]);
+  }, [searchDeliveryman, actualPage]);
 
   async function handleDelete(id) {
     try {
@@ -82,6 +86,7 @@ export default function AddDeliveryMan() {
           ))}
         </tbody>
       </Table>
+      <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
 }
