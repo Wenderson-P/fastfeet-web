@@ -47,7 +47,7 @@ export default createGlobalStyle`
   table{
     text-align: left;
     margin-top: 20px;
-    border-spacing:0 20px; 
+    border-spacing:0 15px; 
   }
 
   tbody{
@@ -60,7 +60,7 @@ export default createGlobalStyle`
   }
 
   th{
-    padding:0px 15px;
+    padding:0px 10px;
     font-size:16px;
     color: #444444;
 
@@ -71,7 +71,7 @@ export default createGlobalStyle`
 
   td {
     text-align: left;
-    padding:20px 0px 16px 15px;
+    padding:10px 0px 10px 15px;
     &:last-child{
       text-align: right;
       padding-right:30px;
