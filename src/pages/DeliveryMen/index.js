@@ -12,15 +12,16 @@ import ActionMenu from '~/components/ActionMenu';
 
 export default function AddDeliveryMan() {
   const [deliverymen, setDeliverymen] = useState([]);
+  const [searchDeliveryman, setSearchDeliveryman] = useState('');
 
   useEffect(() => {
     async function loadDeliveryMen() {
-      const response = await api.get('deliveryman');
+      const response = await api.get(`deliveryman?q=${searchDeliveryman}`);
 
       setDeliverymen(response.data);
     }
     loadDeliveryMen();
-  }, []);
+  }, [searchDeliveryman]);
 
   async function handleDelete(id) {
     try {
@@ -38,7 +39,10 @@ export default function AddDeliveryMan() {
     <Container>
       <h2>Gerenciando entregadores</h2>
       <Division>
-        <SearchBar placeholder="Buscar por entregadores" />
+        <SearchBar
+          placeholder="Buscar por entregadores"
+          search={setSearchDeliveryman}
+        />
         <AddButton url="/deliverymen/add-deliveryman" />
       </Division>
       <Table>
