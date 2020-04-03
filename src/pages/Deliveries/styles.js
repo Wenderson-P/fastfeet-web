@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 0% 10% auto;
+  margin: 0% 10%;
   display: flex;
   flex-direction: column;
+  height: 85%;
 `;
 
 export const Table = styled.table``;

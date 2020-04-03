@@ -10,6 +10,7 @@ import StatusBadge from '~/components/StatusBadge';
 import ActionMenu from '~/components/ActionMenu';
 import DeliveryViewModal from '~/components/DeliveryViewModal';
 import Pagination from '~/components/Pagination';
+import EmpyState from '~/components/EmptyState';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -59,53 +60,57 @@ export default function Deliveries() {
           closeModal={closeModal}
         />
       )}
-      <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Destinatário</th>
-            <th>Entregador</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {deliveries.map(delivery => (
+      {deliveries.length !== 0 ? (
+        <Table>
+          <thead>
             <tr>
-              <td>#{delivery.id}</td>
-              <td>{delivery.recipient.name}</td>
-              <Deliveryman>
-                <Avatar
-                  src={
-                    delivery.deliveryman.avatar
-                      ? delivery.deliveryman.avatar.url
-                      : `https://ui-avatars.com/api/?name=${delivery.deliveryman.name}&background=8171E7&color=fff`
-                  }
-                  alt="Foto do entregador"
-                />
-                {delivery.deliveryman.name}
-              </Deliveryman>
-              <td>{delivery.recipient.city}</td>
-              <td>{delivery.recipient.state}</td>
-              <StatusBadge
-                start_date={delivery.start_date}
-                end_date={delivery.end_date}
-                canceled_at={delivery.canceled_at}
-              />
-              <td>
-                <ActionMenu
-                  visualize
-                  viewAction={() => showModal(delivery.id)}
-                  edit
-                  erase
-                />
-              </td>
+              <th>ID</th>
+              <th>Destinatário</th>
+              <th>Entregador</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>Status</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {deliveries.map(delivery => (
+              <tr>
+                <td>#{delivery.id}</td>
+                <td>{delivery.recipient.name}</td>
+                <Deliveryman>
+                  <Avatar
+                    src={
+                      delivery.deliveryman.avatar
+                        ? delivery.deliveryman.avatar.url
+                        : `https://ui-avatars.com/api/?name=${delivery.deliveryman.name}&background=8171E7&color=fff`
+                    }
+                    alt="Foto do entregador"
+                  />
+                  {delivery.deliveryman.name}
+                </Deliveryman>
+                <td>{delivery.recipient.city}</td>
+                <td>{delivery.recipient.state}</td>
+                <StatusBadge
+                  start_date={delivery.start_date}
+                  end_date={delivery.end_date}
+                  canceled_at={delivery.canceled_at}
+                />
+                <td>
+                  <ActionMenu
+                    visualize
+                    viewAction={() => showModal(delivery.id)}
+                    edit
+                    erase
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+          <EmpyState />
+        )}
       <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
