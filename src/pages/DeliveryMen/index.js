@@ -10,6 +10,7 @@ import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
 import ActionMenu from '~/components/ActionMenu';
 import Pagination from '~/components/Pagination';
+import EmpyState from '~/components/EmptyState';
 
 export default function AddDeliveryMan() {
   const [deliverymen, setDeliverymen] = useState([]);
@@ -49,43 +50,47 @@ export default function AddDeliveryMan() {
         />
         <AddButton url="/deliverymen/add-deliveryman" />
       </Division>
-      <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Foto</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {deliverymen.map(deliveryman => (
+      {deliverymen.length !== 0 ? (
+        <Table>
+          <thead>
             <tr>
-              <td>#{deliveryman.id}</td>
-              <Deliveryman>
-                <Avatar
-                  src={
-                    deliveryman.avatar
-                      ? deliveryman.avatar.url
-                      : `https://ui-avatars.com/api/?name=${deliveryman.name}&background=8171E7&color=fff`
-                  }
-                  alt="Foto do entregador"
-                />
-              </Deliveryman>
-              <td>{deliveryman.name}</td>
-              <td>{deliveryman.email}</td>
-              <td>
-                <ActionMenu
-                  edit
-                  erase
-                  eraseAction={() => handleDelete(deliveryman.id)}
-                />
-              </td>
+              <th>ID</th>
+              <th>Foto</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {deliverymen.map(deliveryman => (
+              <tr>
+                <td>#{deliveryman.id}</td>
+                <Deliveryman>
+                  <Avatar
+                    src={
+                      deliveryman.avatar
+                        ? deliveryman.avatar.url
+                        : `https://ui-avatars.com/api/?name=${deliveryman.name}&background=8171E7&color=fff`
+                    }
+                    alt="Foto do entregador"
+                  />
+                </Deliveryman>
+                <td>{deliveryman.name}</td>
+                <td>{deliveryman.email}</td>
+                <td>
+                  <ActionMenu
+                    edit
+                    erase
+                    eraseAction={() => handleDelete(deliveryman.id)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+          <EmpyState />
+        )}
       <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
