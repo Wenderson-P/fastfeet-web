@@ -12,15 +12,16 @@ import ActionMenu from '~/components/ActionMenu';
 
 export default function Deliveries() {
   const [recipients, setRecipients] = useState([]);
+  const [searchRecipient, setSearchRecipient] = useState('');
 
   useEffect(() => {
     async function loadRecipients() {
-      const response = await api.get('recipients');
+      const response = await api.get(`recipients?q=${searchRecipient}`);
 
       setRecipients(response.data);
     }
     loadRecipients();
-  }, []);
+  }, [searchRecipient]);
 
   async function handleDelete(id) {
     try {
@@ -39,7 +40,10 @@ export default function Deliveries() {
     <Container>
       <h2>Gerenciando destinatários</h2>
       <Division>
-        <SearchBar placeholder="Buscar por destinatários" />
+        <SearchBar
+          placeholder="Buscar por destinatários"
+          search={setSearchRecipient}
+        />
         <AddButton url="/recipient/add-recipient" />
       </Division>
       <Table>
