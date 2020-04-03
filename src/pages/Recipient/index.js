@@ -9,19 +9,23 @@ import history from '~/services/history';
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
 import ActionMenu from '~/components/ActionMenu';
+import Pagination from '~/components/Pagination';
 
 export default function Deliveries() {
   const [recipients, setRecipients] = useState([]);
   const [searchRecipient, setSearchRecipient] = useState('');
+  const [actualPage, setActualPage] = useState(1);
 
   useEffect(() => {
     async function loadRecipients() {
-      const response = await api.get(`recipients?q=${searchRecipient}`);
+      const response = await api.get(
+        `recipients?q=${searchRecipient}&page=${actualPage}`
+      );
 
       setRecipients(response.data);
     }
     loadRecipients();
-  }, [searchRecipient]);
+  }, [searchRecipient, actualPage]);
 
   async function handleDelete(id) {
     try {
@@ -75,6 +79,7 @@ export default function Deliveries() {
           ))}
         </tbody>
       </Table>
+      <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
 }
