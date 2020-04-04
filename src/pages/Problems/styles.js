@@ -6,4 +6,11 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Table = styled.table``;
+export const Table = styled.table`
+  .problem {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+  }
+`;
