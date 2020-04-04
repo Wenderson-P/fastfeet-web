@@ -10,6 +10,7 @@ import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
 import ActionMenu from '~/components/ActionMenu';
 import Pagination from '~/components/Pagination';
+import EmpyState from '~/components/EmptyState';
 
 export default function Deliveries() {
   const [recipients, setRecipients] = useState([]);
@@ -50,35 +51,39 @@ export default function Deliveries() {
         />
         <AddButton url="/recipient/add-recipient" />
       </Division>
-      <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Endereço</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {recipients.map(recipient => (
+      {recipients.length !== 0 ? (
+        <Table>
+          <thead>
             <tr>
-              <td>#{recipient.id}</td>
-              <td>{recipient.name}</td>
-              <td>
-                {recipient.street}, {recipient.number}, {recipient.city} -{' '}
-                {recipient.state}
-              </td>
-              <td>
-                <ActionMenu
-                  edit
-                  erase
-                  eraseAction={() => handleDelete(recipient.id)}
-                />
-              </td>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Endereço</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {recipients.map(recipient => (
+              <tr>
+                <td>#{recipient.id}</td>
+                <td>{recipient.name}</td>
+                <td>
+                  {recipient.street}, {recipient.number}, {recipient.city} -{' '}
+                  {recipient.state}
+                </td>
+                <td>
+                  <ActionMenu
+                    edit
+                    erase
+                    eraseAction={() => handleDelete(recipient.id)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+          <EmpyState />
+        )}
       <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
