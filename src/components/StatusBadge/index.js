@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, StatusData, StatusElipse, Circle } from './styles';
+import { StatusData, StatusElipse, Circle } from './styles';
 
 export default function StatusBadge({ start_date, end_date, canceled_at }) {
   const [status, setStatus] = useState();

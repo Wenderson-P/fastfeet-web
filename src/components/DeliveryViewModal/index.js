@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { parseISO, format } from 'date-fns/';
-import { Container, Modal, Data, Signature } from './styles';
+import { Container, Modal, Data } from './styles';
 
 export default function DeliveryViewModal({
   hide,
