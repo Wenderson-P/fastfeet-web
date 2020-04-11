@@ -6,19 +6,22 @@ import api from '~/services/api';
 
 import ActionMenu from '~/components/ActionMenu';
 import ProblemViewModal from '~/components/ProblemViewModal';
+import Pagination from '~/components/Pagination';
 
 export default function Problems() {
   const [problems, setProblems] = useState([]);
   const [problem, setProblem] = useState();
   const [hideModal, setHideModal] = useState(true);
+  const [actualPage, setActualPage] = useState(1);
+
   useEffect(() => {
     async function loadProblems() {
-      const response = await api.get('delivery/problems');
+      const response = await api.get(`delivery/problems?page=${actualPage}`);
 
       setProblems(response.data);
     }
     loadProblems();
-  }, []);
+  }, [actualPage]);
 
   function showModal(delivery_id) {
     const problemFiltered = problems.filter(item => item.id === delivery_id);
@@ -65,6 +68,7 @@ export default function Problems() {
           ))}
         </tbody>
       </Table>
+      <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
 }
