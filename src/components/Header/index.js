@@ -1,10 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
 import { Container, Menu, Profile } from './styles';
 import logo from '~/assets/fastfeet-logo.png';
+import { signOut } from '~/store/modules/auth/actions';
 
 export default function Header() {
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(signOut());
+  }
   return (
     <Container>
       <Menu>
@@ -54,7 +60,9 @@ export default function Header() {
       </Menu>
       <Profile>
         <h4>Wenderson Pacheco</h4>
-        <button type="button">sair do sistema</button>
+        <button type="button" onClick={handleLogout}>
+          sair do sistema
+        </button>
       </Profile>
     </Container>
   );
