@@ -1,4 +1,5 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { useDispatch } from 'react-redux';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -14,7 +15,7 @@ export function* signIn({ payload }) {
 
   const { token, user } = response.data;
 
-  api.defaults.headers.Authorization = `Beader ${token}`;
+  api.defaults.headers.Authorization = `Bearer ${token}`;
 
   yield put(signInSuccess(token, user));
 
@@ -27,10 +28,15 @@ export function setToken({ payload }) {
   }
 
   const { token } = payload.auth;
-  api.defaults.headers.Authorization = `Beader ${token}`;
+  api.defaults.headers.Authorization = `Bearer ${token}`;
+}
+
+export function signOut() {
+  history.push('/');
 }
 
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
