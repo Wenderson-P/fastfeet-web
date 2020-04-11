@@ -63,7 +63,7 @@ export default function AddDeliveryMan() {
           </thead>
           <tbody>
             {deliverymen.map(deliveryman => (
-              <tr>
+              <tr key={deliveryman.id}>
                 <td>#{deliveryman.id}</td>
                 <Deliveryman>
                   <Avatar

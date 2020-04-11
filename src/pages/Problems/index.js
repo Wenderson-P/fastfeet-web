@@ -50,7 +50,7 @@ export default function Problems() {
         </thead>
         <tbody>
           {problems.map(problem => (
-            <tr>
+            <tr key={problem.id}>
               <td>#{problem.id}</td>
               <td className="problem">{problem.description}</td>
               <td>

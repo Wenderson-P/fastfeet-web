@@ -26,6 +26,7 @@ export default function Pagination({ actualPage = 1, changePage }) {
         <PageBlock
           active={page === actualPage}
           onClick={() => changePage(page)}
+          key={page}
         >
           {page}
         </PageBlock>

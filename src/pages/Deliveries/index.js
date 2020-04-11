@@ -75,7 +75,7 @@ export default function Deliveries() {
           </thead>
           <tbody>
             {deliveries.map(delivery => (
-              <tr>
+              <tr key={delivery.id}>
                 <td>#{delivery.id}</td>
                 <td>{delivery.recipient.name}</td>
                 <Deliveryman>
