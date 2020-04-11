@@ -77,4 +77,13 @@ export default createGlobalStyle`
       padding-right:30px;
     }
   }
+
+  form{
+    div{
+      span{
+        margin-top:5px;
+        color: red;
+      }
+    }
+  }
 `;
