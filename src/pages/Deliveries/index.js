@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+import { toast } from 'react-toastify';
 import { Container, Table, Deliveryman, Avatar, Division } from './styles';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 import SearchBar from '~/components/SearchBar';
 import AddButton from '~/components/AddButton';
@@ -34,6 +36,19 @@ export default function Deliveries() {
     const deliveryFiltered = deliveries.filter(item => item.id === delivery_id);
     setDelivery(deliveryFiltered[0]);
     setHideModal(!hideModal);
+  }
+
+  async function handleDelete(id) {
+    try {
+      if (window.confirm(`Você deseja excluir a entrega ${id}?`)) {
+        await api.delete(`/delivery/${id}`);
+        history.go(0);
+      }
+    } catch (error) {
+      toast.error('Não foi possivel excluir esta entrega', {
+        autoClose: 4000,
+      });
+    }
   }
 
   function closeModal() {
@@ -101,7 +116,13 @@ export default function Deliveries() {
                     visualize
                     viewAction={() => showModal(delivery.id)}
                     edit
+                    editAction={() =>
+                      history.push('/deliveries/edit-delivery', {
+                        delivery,
+                      })
+                    }
                     erase
+                    eraseAction={() => handleDelete(delivery.id)}
                   />
                 </td>
               </tr>
