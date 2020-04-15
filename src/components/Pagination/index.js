@@ -23,10 +23,22 @@ export default function Pagination({ actualPage = 1, changePage }) {
   ]);
 
   useEffect(() => {
-    if (actualPage <= 0) {
+    if (actualPage === 0) {
       changePage(1);
     }
     const lastpage = pages[pages.length - 1];
+    const initialPage = pages[0];
+
+    if (actualPage < initialPage) {
+      if (actualPage === 0) {
+        return;
+      }
+
+      const newPages = pages;
+      newPages.unshift(actualPage);
+      newPages.pop();
+      setPages(newPages);
+    }
 
     if (actualPage > lastpage) {
       const newPages = pages;
