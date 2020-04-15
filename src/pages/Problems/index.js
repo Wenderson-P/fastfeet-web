@@ -7,6 +7,7 @@ import api from '~/services/api';
 import ActionMenu from '~/components/ActionMenu';
 import ProblemViewModal from '~/components/ProblemViewModal';
 import Pagination from '~/components/Pagination';
+import EmpyState from '~/components/EmptyState';
 
 export default function Problems() {
   const [problems, setProblems] = useState([]);
@@ -43,31 +44,35 @@ export default function Problems() {
           closeModal={closeModal}
         />
       )}
-      <Table>
-        <thead>
-          <tr>
-            <th>Encomenda</th>
-            <th>Problema</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {problems.map(problem => (
-            <tr key={problem.id}>
-              <td>#{problem.id}</td>
-              <td className="problem">{problem.description}</td>
-              <td>
-                <ActionMenu
-                  visualize
-                  viewAction={() => showModal(problem.id)}
-                  erase
-                  eraseLabel="Cancelar encomenda"
-                />
-              </td>
+      {problems.length !== 0 ? (
+        <Table>
+          <thead>
+            <tr>
+              <th>Encomenda</th>
+              <th>Problema</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {problems.map(problem => (
+              <tr key={problem.id}>
+                <td>#{problem.id}</td>
+                <td className="problem">{problem.description}</td>
+                <td>
+                  <ActionMenu
+                    visualize
+                    viewAction={() => showModal(problem.id)}
+                    erase
+                    eraseLabel="Cancelar encomenda"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+          <EmpyState />
+        )}
       <Pagination actualPage={actualPage} changePage={setActualPage} />
     </Container>
   );
