@@ -74,6 +74,9 @@ export default function Deliveries() {
                   <ActionMenu
                     edit
                     erase
+                    editAction={() =>
+                      history.push('/recipient/edit-recipient', recipient)
+                    }
                     eraseAction={() => handleDelete(recipient.id)}
                   />
                 </td>
