@@ -1,16 +1,25 @@
 import React from 'react';
 
 import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
 import { Container, Header, Buttons, Row, Item } from './styles';
 
 import api from '~/services/api';
 import history from '~/services/history';
 
-import AvatarInput from './AvatarInput';
+import AvatarInput from '../AvatarInput';
 import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
 
-export default function AddDelivery() {
+const schema = Yup.object().shape({
+  name: Yup.string().required('Insira um nome válido'),
+  email: Yup.string()
+    .email()
+    .required('Insira um email válido'),
+  avatar_id: Yup.number().required('Foto é obrigatória'),
+});
+
+export default function AddDeliveryman() {
   async function handleSubmit({ name, email, avatar_id }) {
     await api.post('/deliveryman', {
       name,
@@ -20,6 +29,7 @@ export default function AddDelivery() {
 
     history.push('/deliverymen');
   }
+
   return (
     <Container>
       <Header>
@@ -29,7 +39,7 @@ export default function AddDelivery() {
           <SaveButton onClick={handleSubmit} formId="addDeliveryMan" />
         </Buttons>
       </Header>
-      <Form id="addDeliveryMan" onSubmit={handleSubmit}>
+      <Form id="addDeliveryMan" onSubmit={handleSubmit} schema={schema}>
         <AvatarInput name="avatar_id" />
         <Row>
           <Item>
