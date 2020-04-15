@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import {
   Container,
@@ -18,6 +19,12 @@ import history from '~/services/history';
 import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
 import SelectInput from '~/components/SelectInput';
+
+const schema = Yup.object().shape({
+  product: Yup.string().required('Insira um produto válido'),
+  recipient_id: Yup.number().required('Destinatário é obrigatório'),
+  deliveryman_id: Yup.number().required('Entregador é obrigatório'),
+});
 
 export default function AddDelivery() {
   const [deliverymen, setDeliverymen] = useState([]);
@@ -54,12 +61,24 @@ export default function AddDelivery() {
   }, []);
 
   async function handleSubmit() {
-    await api.post('/delivery', {
-      product: selectedProduct,
-      recipient_id: selectedRecipient.value,
-      deliveryman_id: selectedDeliveryman.value,
-    });
-    history.goBack();
+    schema
+      .isValid({
+        product: selectedProduct,
+        recipient_id: selectedRecipient.value,
+        deliveryman_id: selectedDeliveryman.value,
+      })
+      .then(async valid => {
+        if (valid) {
+          await api.post('/delivery', {
+            product: selectedProduct,
+            recipient_id: selectedRecipient.value,
+            deliveryman_id: selectedDeliveryman.value,
+          });
+          history.goBack();
+        } else {
+          toast.error('Por favor, verifique os dados');
+        }
+      });
   }
   return (
     <Container>
@@ -75,6 +94,9 @@ export default function AddDelivery() {
           <Select>
             <span>Destinatário</span>
             <SelectInput
+              type="text"
+              placeholder="Selecione um destinatário"
+              noOptionsMessage={() => 'Nenhum destinatário encontrado'}
               options={recipients}
               valueSelected={setSelectedRecipient}
             />
@@ -82,8 +104,11 @@ export default function AddDelivery() {
           <Select>
             <span>Entregador</span>
             <SelectInput
+              type="text"
               options={deliverymen}
               valueSelected={setselectedDeliveryman}
+              placeholder="Selecione um entregador"
+              noOptionsMessage={() => 'Nenhum Entregador encontrado'}
             />
           </Select>
         </Row>
