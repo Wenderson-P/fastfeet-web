@@ -14,6 +14,7 @@ import EditDeliveryMan from '~/pages/DeliveryMen/EditDeliveryMan';
 
 import Recipient from '~/pages/Recipient';
 import AddRecipient from '~/pages/Recipient/AddRecipient';
+import EditRecipient from '~/pages/Recipient/EditRecipient';
 
 import Problems from '~/pages/Problems';
 
@@ -55,6 +56,12 @@ export default function Routes() {
         path="/recipient/add-recipient"
         exact
         component={AddRecipient}
+        isPrivate
+      />
+      <Route
+        path="/recipient/edit-recipient"
+        exact
+        component={EditRecipient}
         isPrivate
       />
 
