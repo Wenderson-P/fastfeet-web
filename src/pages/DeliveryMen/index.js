@@ -80,6 +80,9 @@ export default function AddDeliveryMan() {
                 <td>
                   <ActionMenu
                     edit
+                    editAction={() =>
+                      history.push('/deliverymen/edit-deliveryman', deliveryman)
+                    }
                     erase
                     eraseAction={() => handleDelete(deliveryman.id)}
                   />
