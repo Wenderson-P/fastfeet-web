@@ -5,9 +5,9 @@ import { Container } from './styles';
 
 import api from '~/services/api';
 
-export default function AvatarInput() {
+export default function AvatarInput({ image, imageId }) {
   const { registerField } = useField('avatar');
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState();
   const [file, setFile] = useState();
 
   const ref = useRef();
@@ -19,6 +19,10 @@ export default function AvatarInput() {
         ref: ref.current,
         path: 'dataset.file',
       });
+    }
+    if (image) {
+      setPreview(image.url);
+      setFile(imageId);
     }
   }, [ref.current]);
 
