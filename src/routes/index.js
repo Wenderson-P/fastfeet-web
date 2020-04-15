@@ -10,6 +10,7 @@ import EditDelivery from '~/pages/Deliveries/EditDelivery';
 
 import DeliveryMen from '~/pages/DeliveryMen';
 import AddDeliveryMan from '~/pages/DeliveryMen/AddDeliveryMan';
+import EditDeliveryMan from '~/pages/DeliveryMen/EditDeliveryMan';
 
 import Recipient from '~/pages/Recipient';
 import AddRecipient from '~/pages/Recipient/AddRecipient';
@@ -40,6 +41,12 @@ export default function Routes() {
         path="/deliverymen/add-deliveryman"
         exact
         component={AddDeliveryMan}
+        isPrivate
+      />
+      <Route
+        path="/deliverymen/edit-deliveryman"
+        exact
+        component={EditDeliveryMan}
         isPrivate
       />
 
