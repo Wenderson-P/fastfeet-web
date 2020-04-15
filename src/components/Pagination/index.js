@@ -29,7 +29,14 @@ export default function Pagination({ actualPage = 1, changePage }) {
     const lastpage = pages[pages.length - 1];
 
     if (actualPage > lastpage) {
-      changePage(actualPage - 1);
+      const newPages = pages;
+      if (actualPage < lastpage) {
+        newPages.pop();
+      } else {
+        newPages.push(actualPage);
+        newPages.shift();
+      }
+      setPages(newPages);
     }
   }, [actualPage]);
 
