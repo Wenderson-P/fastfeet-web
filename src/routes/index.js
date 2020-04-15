@@ -6,6 +6,7 @@ import SignIn from '~/pages/SignIn';
 
 import Deliveries from '~/pages/Deliveries';
 import AddDelivery from '~/pages/Deliveries/AddDelivery';
+import EditDelivery from '~/pages/Deliveries/EditDelivery';
 
 import DeliveryMen from '~/pages/DeliveryMen';
 import AddDeliveryMan from '~/pages/DeliveryMen/AddDeliveryMan';
@@ -25,6 +26,12 @@ export default function Routes() {
         path="/deliveries/add-delivery"
         exact
         component={AddDelivery}
+        isPrivate
+      />
+      <Route
+        path="/deliveries/edit-delivery"
+        exact
+        component={EditDelivery}
         isPrivate
       />
 
