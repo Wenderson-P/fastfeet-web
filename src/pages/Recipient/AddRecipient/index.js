@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Yup from 'yup';
 
 import { Form, Input } from '@rocketseat/unform';
 import { Container, Header, Buttons, Row } from './styles';
@@ -8,6 +9,20 @@ import history from '~/services/history';
 
 import SaveButton from '~/components/SaveButton';
 import GoBackButton from '~/components/GoBackButton';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('Insira um nome'),
+  street: Yup.string().required('Insira uma rua'),
+  city: Yup.string().required('Insira uma cidade'),
+  state: Yup.string().required('Insira um estado'),
+  number: Yup.number()
+    .required('Insira um número')
+    .typeError('Somente números'),
+  cep: Yup.string()
+    .matches(/^[0-9]{8}$/, 'CEP deve ter 8 números')
+    .required('Insira um cep')
+    .typeError('Somente números'),
+});
 
 export default function AddRecipient() {
   async function handleSubmit({
@@ -39,7 +54,7 @@ export default function AddRecipient() {
           <SaveButton onClick={handleSubmit} formId="addRecipient" />
         </Buttons>
       </Header>
-      <Form id="addRecipient" onSubmit={handleSubmit}>
+      <Form id="addRecipient" onSubmit={handleSubmit} schema={schema}>
         <Row>
           <Input
             name="name"
